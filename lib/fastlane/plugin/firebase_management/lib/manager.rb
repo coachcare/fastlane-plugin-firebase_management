@@ -23,6 +23,8 @@ module Fastlane
 
 				if project = projects.select {|p| p["projectId"] == project_id }.first then
 					project
+				elsif projects.count == 1
+					projects.first
 				else 
 					options = projects.map { |p| "#{p["displayName"]} (#{p["projectId"]})" }
 					index = select_index("Select project:", options)
@@ -48,6 +50,8 @@ module Fastlane
 
 				if app = apps.select {|a| a["appId"] == app_id }.first then
 					app
+				elsif apps.count == 1
+					apps.first
 				else
 					options = apps.map { |a| "#{a["displayName"] || a["bundleId"] || a["packageName"]} (#{a["appId"]})" }
 					index = select_index("Select app:", options)
