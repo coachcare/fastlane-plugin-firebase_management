@@ -50,6 +50,8 @@ module Fastlane
 
 				if app = apps.select {|a| a["appId"] == app_id }.first then
 					app
+				elsif apps.count == 1
+					apps.first
 				else
 					options = apps.map { |a| "#{a["displayName"] || a["bundleId"] || a["packageName"]} (#{a["appId"]})" }
 					index = select_index("Select app:", options)
