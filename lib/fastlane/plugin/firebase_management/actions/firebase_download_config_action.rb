@@ -18,10 +18,19 @@ module Fastlane
 					app_id = params[:app_id]
 				elsif params[:bundle_id] then
 					# select app
-					apps = api.ios_app_list(project_id)
+					case type
+					when :ios
+						apps = api.ios_app_list(project_id)
 
-					# search for newly created app
-					app = apps.detect {|app| app["bundleId"] == params[:bundle_id] }
+						# search for newly created app
+						app = apps.detect {|app| app["bundleId"] == params[:bundle_id] }
+					when :android
+						apps = api.android_app_list(project_id)
+
+						# search for newly created app
+						app = apps.detect {|app| app["packageName"] == params[:bundle_id] }
+					end
+					
 					app_id = app["appId"]
 				else 
 					app_id = manager.select_app(project_id, nil, type)["appId"]
