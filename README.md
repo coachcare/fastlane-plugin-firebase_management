@@ -36,6 +36,13 @@ firebase_list = firebase_management_list(
     type: "android" #(Required). Android or ios This field will return a hash of bundle id's and their firebase app id's
     bundle_id: bundle_id, # This is the bundle id of the app you are searching for. If left blank all app ids will return
 )
+
+```
+
+Where the value of `firebase_list` would be 
+
+```
+{com.captainjeff.com: 1:123456789:android:abcd1234}
 ```
 
 Add app to a project and download config file
