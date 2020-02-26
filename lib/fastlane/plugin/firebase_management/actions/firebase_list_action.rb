@@ -48,7 +48,7 @@ module Fastlane
 								end
 							}
 
-							return ios_apps
+							return Hash[bundle_id_array.zip(app_id_array)]
 						end
 					end
 
