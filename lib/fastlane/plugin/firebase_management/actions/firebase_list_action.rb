@@ -33,7 +33,7 @@ module Fastlane
 				bundle_id_array = []
 				app_id_array = []
 				projects.each_with_index { |p, i| 
-					UI.message "#{i+1}. #{p["displayName"]} (#{p["projectId"]})" 
+					# UI.message "#{i+1}. #{p["displayName"]} (#{p["projectId"]})" 
 					
 					if type == "ios" then
 						ios_apps = api.ios_app_list(p["projectId"])
