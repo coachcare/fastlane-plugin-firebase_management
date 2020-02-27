@@ -39,12 +39,13 @@ module Fastlane
 						ios_apps = api.ios_app_list(p["projectId"])
 						if !ios_apps.empty? then
 							UI.message "  iOS"
+							# UI.message bundle_id
 							ios_apps.sort {|left, right| left["appId"] <=> right["appId"] }.each_with_index { |app, j|
 								bundle_id_array.push(app["packageName"])
 								app_id_array.push(app["appId"])
 					
 								if type == "ios" && bundle_id == app["packageName"] then
-									return Hash[bundle_id, app["appId"]]
+									return Hash[app["packageName"], app["appId"]]
 								end
 							}
 
