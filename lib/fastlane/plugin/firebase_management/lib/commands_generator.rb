@@ -14,7 +14,7 @@ module FirebaseManagement
       program :name, 'firebase'
       program :version, Fastlane::VERSION
       program :description, 'CLI for \'PEM\' - Automatically generate and renew your push notification profiles'
-      program :help, 'Author', 'Felix Krause <pem@krausefx.com>'
+      program :help, 'Author', 'Jeff Drakos <jeffdrakos@gmail.com>'
       program :help, 'Website', 'https://fastlane.tools'
       program :help, 'GitHub', 'https://github.com/fastlane/PEM'
       program :help_formatter, :compact

@@ -28,24 +28,23 @@ module Fastlane
 
 				# download list of projects
 				projects = api.project_list()
-	
 				# create formatted output
 				bundle_id_array = []
 				app_id_array = []
 				projects.each_with_index { |p, i| 
-					# UI.message "#{i+1}. #{p["displayName"]} (#{p["projectId"]})" 
 					
 					if type == "ios" then
 						ios_apps = api.ios_app_list(p["projectId"])
+				
 						if !ios_apps.empty? then
 							UI.message "  iOS"
-							# UI.message bundle_id
 							ios_apps.sort {|left, right| left["appId"] <=> right["appId"] }.each_with_index { |app, j|
-								bundle_id_array.push(app["packageName"])
+								# iOS changed the name from packageName to bundleId
+								bundle_id_array.push(app["bundleId"])
 								app_id_array.push(app["appId"])
-					
-								if type == "ios" && bundle_id == app["packageName"] then
-									return Hash[app["packageName"], app["appId"]]
+								
+								if type == "ios" && bundle_id == app["bundleId"] then
+									return Hash[app["bundleId"], app["appId"]]
 								end
 							}
 
@@ -81,7 +80,7 @@ module Fastlane
 			end
 
 			def self.authors
-				["Ackee, s.r.o."]
+				["captainJeff"]
 			end
 
 			def self.return_value
